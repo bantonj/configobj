@@ -693,7 +693,7 @@ class Section(dict):
                 return self[key]
             except MissingInterpolationOption:
                 return dict.__getitem__(self, key)
-        return '{%s}' % ', '.join([('%s: %s' % (repr(key), repr(_getval(key))))
+        return '{%s}' % ','.join([('%s: %s' % (repr(key), repr(_getval(key))))
             for key in (self.scalars + self.sections)])
 
     __str__ = __repr__
@@ -1338,7 +1338,7 @@ class ConfigObj(Section):
             except MissingInterpolationOption:
                 return dict.__getitem__(self, key)
         return ('%s({%s})' % (self.__class__.__name__,
-                ', '.join([('%s: %s' % (repr(key), repr(_getval(key))))
+                ','.join([('%s: %s' % (repr(key), repr(_getval(key))))
                 for key in (self.scalars + self.sections)])))
 
 
@@ -1756,7 +1756,7 @@ class ConfigObj(Section):
                 return ','
             elif len(value) == 1:
                 return self._quote(value[0], multiline=False) + ','
-            return ', '.join([self._quote(val, multiline=False)
+            return ','.join([self._quote(val, multiline=False)
                 for val in value])
         if not isinstance(value, six.string_types):
             if self.stringify:
